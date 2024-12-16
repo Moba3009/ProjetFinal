@@ -3,13 +3,13 @@ using UnityEngine.AI;
 
 public class RangedEnemy : MonoBehaviour
 {
-    [SerializeField] private float _shootRange = 10f;  // Plage de tir
-    [SerializeField] private GameObject _projectilePrefab;  // Préfabriqué du projectile
-    [SerializeField] private Transform _firePoint;  // Point d'où le projectile sera tiré
-    [SerializeField] private float _fireRate = 1f;  // Fréquence de tir
+    [SerializeField] private float _shootRange = 10f; 
+    [SerializeField] private GameObject _projectilePrefab; 
+    [SerializeField] private Transform _firePoint; 
+    [SerializeField] private float _fireRate = 1f; 
 
-    private Transform _player;  // Référence au joueur
-    private NavMeshAgent _agent;  // Composant NavMeshAgent pour déplacer l'ennemi
+    private Transform _player;  
+    private NavMeshAgent _agent;  
     private float _nextFireTime;
 
     private void Start()
