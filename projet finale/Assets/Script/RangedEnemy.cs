@@ -15,7 +15,7 @@ public class RangedEnemy : MonoBehaviour
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player")?.transform;  // Trouver le joueur par son tag
+        _player = GameObject.FindGameObjectWithTag("Player")?.transform; 
 
         if (_player == null)
         {
