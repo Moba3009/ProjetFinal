@@ -22,6 +22,12 @@ public class AnimationLinker : MonoBehaviour
         _animator.SetBool("IsDeath", true);
     }
 
+    public void Idle()
+    {
+        _animator.SetBool("IsWalking", false);
+        _animator.SetBool("IsAttacking", false);
+    }
+
     public void Attack()
     {
         _animator.SetBool("IsAttacking", true);

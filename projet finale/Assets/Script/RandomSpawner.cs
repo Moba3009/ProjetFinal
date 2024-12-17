@@ -7,7 +7,8 @@ public class RandomSpawner : MonoBehaviour
     [Header("Liste de positions possibles")]
     [SerializeField] private List<Transform> _positions;  // Liste des 5 positions possibles
 
-    [Header("Éléments à instancier")]
+    [Header("Référence au QuestionSpawner")]
+    [SerializeField] private GameObject _questionSpawnerGameObject;  // Référence au GameObject QuestionSpawner
     [SerializeField] private GameObject _enemyRangedPrefab;  // Ennemi à distance
     [SerializeField] private GameObject _enemyMeleePrefab;   // Ennemi de mêlée
     [SerializeField] private GameObject _interactiveObjectPrefab; // Objet interactif
@@ -51,13 +52,22 @@ public class RandomSpawner : MonoBehaviour
     {
         if (prefab != null)
         {
-            Instantiate(prefab, _positions[positionIndex].position, Quaternion.identity);
+            // Instancier l'objet
+            GameObject instance = Instantiate(prefab, _positions[positionIndex].position, Quaternion.identity);
+
+            // Si l'objet instancié est interactif, lui passer la référence au QuestionSpawner
+            InteractiveObject interactiveScript = instance.GetComponent<InteractiveObject>();
+            if (interactiveScript != null)
+            {
+                interactiveScript.SetQuestionSpawner(_questionSpawnerGameObject);
+            }
         }
         else
         {
             Debug.LogError("Prefab manquant!");
         }
     }
+
 
     // Fonction pour mélanger les indices de positions
     private void ShuffleList(List<int> list)
